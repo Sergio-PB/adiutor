@@ -3,7 +3,7 @@ from django.db import models
 class terapeutas(models.Model):
     Nome = models.CharField(max_length=20)
     # CRP 12/ _ _ _ _ _
-    Crp = models.IntegerField()
+    Crp = models.CharField(max_length=5)
     Senha = models.CharField(max_length=10)
 
     def __str__(self):
