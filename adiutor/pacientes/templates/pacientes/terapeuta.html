@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <title>Área de {{ nome }}</title>
+  </head>
+  <body>
+    <header>
+      <div class="head">
+        <h1>Olá {{ nome }}!</h1>
+        <h2>Selecione um paciente:</h2>
+      </div>
+    </header>
+    <div class="container">
+      <div class="select pacients">
+        <table>
+          <a href="#">
+            <tr><a href="#">
+              <th>ID</th>
+              <th>Nome</th>
+              <th>Status</th>
+              </a>
+            </tr>
+          </a>
+          {% for p in pacientes %}
+              <tr>
+                <th>
+                  <a href="/acao?id={{ p.Id }}&status={{ p.Status }}&nome={{ nome }}&paciente={{ p.Nome }}">
+                    {{ p.Id }}
+                  </a>
+                </th>
+                <th>
+                  <a href="/acao?id={{ p.Id }}&status={{ p.Status }}&nome={{ nome }}&paciente={{ p.Nome }}">
+                    {{ p.Nome }}
+                  </a>
+                </th>
+                <th>
+                  <a href="/acao?id={{ p.Id }}&status={{ p.Status }}&nome={{ nome }}&paciente={{ p.Nome }}">
+                    {{ p.Status }}
+                  </a>
+                </th>
+              </tr>
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+  </body>
+</html>

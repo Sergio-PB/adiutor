@@ -16,26 +16,34 @@ class terapeutas(models.Model):
 class pacientes(models.Model):
     Id = models.IntegerField(primary_key=True)
     Nome = models.CharField(max_length=200)
-    Responsavel = models.CharField(max_length=255, blank=True)
-    Parentesco = models.CharField(max_length=200, blank=True)
+    Responsavel = models.CharField(max_length=255, blank=True, null=True)
+    Parentesco = models.CharField(max_length=200, blank=True, null=True)
     Nascimento = models.DateField()
     SEX = (
         ('MASCULINO', 'Masculino'),
         ('FEMININO', 'Feminino'),
     )
-    Sexo = models.CharField(max_length=2, choices=SEX)
+    Sexo = models.CharField(max_length=20, choices=SEX)
     Cadastro = models.DateField()
+    Terapeuta = models.ForeignKey(terapeutas, on_delete=models.CASCADE)
     Inicio = models.DateField()
-    Termino = models.DateField(blank=True)
+    Termino = models.DateField(blank=True, null=True)
+    STATUS = (
+        ('ANAMNESE', 'Deve ser feita anamnese'),
+        ('ATENDIMENTO', 'Está sendo atendido'),
+        ('LICENCA', 'Em licença'),
+        ('ENCERRADO', 'Encerrado'),
+    )
+    Status = models.CharField(max_length=15, choices=STATUS, default='ANAMNESE')
     Agendamento = models.IntegerField()
     CONVENIOS = (
         ('UNIMED', 'UNIMED'),
         ('AGEMED', 'AGEMED'),
         ('ABEPOM', 'ABEPOM'),
-        ('PARTICULAR', 'PARTICULAR'),
+        ('PARTICULAR', 'Particular'),
         ('LOCUS', 'LOCUS'),
         ('ELASE', 'ELASE'),
-        ('CORTESIA', 'CORTESIA'),
+        ('CORTESIA', 'Cortesia'),
     )
     Convenio = models.CharField(max_length=20, choices=CONVENIOS)
     MOD = (
@@ -46,9 +54,9 @@ class pacientes(models.Model):
         ('AVALIACAO', 'Avaliação'),
     )
     Modalidade = models.CharField(max_length=20, choices=MOD)
-    Celular = models.IntegerField(blank=True)
-    Whats = models.IntegerField( blank=True)
-    Fixo = models.IntegerField(blank=True)
+    Celular = models.IntegerField(blank=True, null=True)
+    Whats = models.IntegerField( blank=True, null=True)
+    Fixo = models.IntegerField(blank=True, null=True)
     Email = models.EmailField(max_length=40)
     CIVIL = (
         ('SOLTEIRO', 'Solteiro'),

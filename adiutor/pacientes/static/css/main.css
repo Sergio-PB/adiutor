@@ -3,27 +3,68 @@
   padding: 0;
 }
 
+/*#dccf71e6*/
 body{
-  background-color: #dccf71e6;
+  background-color: #e5dc9a;
 
-  font: lighter 30px Arial, Helvetica, sans-serif;
+  font: lighter 30px Times, sans-serif;
 
   line-height: 1.6em; /* Spacing between lines */
   margin: 0;
-  overflow: hidden;
 }
 
+/*#b50005*/
 header {
   width: 100%;
-  background: #b50005;
+  background: #8f2427;
   text-align: center;
   vertical-align: middle;
 }
 
-h1{
-  padding-top: 5%;
-  padding-bottom: 5%;
+h1, h2{
+  padding-top: 2.5%;
+  padding-bottom: 2.5%;
   color: white;
+}
+
+h2{
+  padding: 1% 0;
+}
+
+.container{
+  width: 90%;
+  margin: 20px 5%;
+  padding: 10px 20px;
+  align-content: center;
+  align-items: center;
+  background-color: #e0daac;
+  border: 1px black solid;
+}
+
+a{
+  color: #8f2427;
+  text-decoration: none
+}
+
+.container ul {
+  margin: 0 1%;
+}
+
+.container li:hover {
+  background-color: #ccc;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+tr, th {
+  border: 1px black solid;
+}
+
+tr:hover {
+  background-color: #ccc;
 }
 
 .form {
@@ -45,4 +86,8 @@ h1{
 
 .formulario input[type = "submit"]{
   height: 50px;
+}
+
+.select{
+
 }

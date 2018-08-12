@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <title>Área de {{ nome }}</title>
+  </head>
+  <body>
+    <header>
+      <div class="head">
+        <h1>Olá {{ nome }}!</h1>
+        <h2>Selecione a ação:</h2>
+      </div>
+    </header>
+    <div class="container">
+      <div class="select action">
+        Paciente: {{ paciente }}
+        <ul>
+          {% if status == 'ANAMNESE' %}
+            <a href="#"><li>Escrever a anamnese</li></a>
+          {% elif status == 'ATENDIMENTO' %}
+            <a href="#"><li>Escrever um prontuário</li></a>
+            <a href="#"><li>Migrar o paciente</li></a>
+          {% else %}
+            <li>Esse paciente foi encerrado</li>
+          {% endif %}
+        </ul>
+
+      </div>
+    </div>
+  </body>
+</html>
