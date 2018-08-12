@@ -1,0 +1,48 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  background-color: #dccf71e6;
+
+  font: lighter 30px Arial, Helvetica, sans-serif;
+
+  line-height: 1.6em; /* Spacing between lines */
+  margin: 0;
+  overflow: hidden;
+}
+
+header {
+  width: 100%;
+  background: #b50005;
+  text-align: center;
+  vertical-align: middle;
+}
+
+h1{
+  padding-top: 5%;
+  padding-bottom: 5%;
+  color: white;
+}
+
+.form {
+  width: 50%;
+  margin: 20px 25%;
+  padding: 10px 20px;
+  border: 3px black solid;
+  align-content: center;
+  align-items: center;
+}
+
+.formulario input{
+  display: block;
+  margin: 10px 0;
+  padding: 10px 0;
+  width: 100%;
+  height: 20px;
+}
+
+.formulario input[type = "submit"]{
+  height: 50px;
+}
