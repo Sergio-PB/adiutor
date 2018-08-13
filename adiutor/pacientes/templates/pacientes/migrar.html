@@ -15,23 +15,21 @@
     <header>
       <div class="head">
         <h1>Olá {{ terapeuta.Nome }}!</h1>
-        <h2>Selecione a ação:</h2>
+        <h2>Selecione a o terapeuta para migrar:</h2>
       </div>
     </header>
     <div class="container">
       <div class="select action">
         Paciente: {{ paciente.Nome }}
-        <ul>
-          {% if paciente.Status == 'ANAMNESE' %}
-            <a href="anamnese?id={{ paciente.Id }}&nome={{ terapeuta.Nome }}"><li>Escrever a anamnese</li></a>
-          {% elif paciente.Status == 'ATENDIMENTO' %}
-            <a href="escrever?id={{ paciente.Id }}&nome={{ terapeuta.Nome }}"><li>Escrever um prontuário</li></a>
-            <a href="migrar?id={{ paciente.Id }}&nome={{ terapeuta.Nome }}"><li>Migrar o paciente</li></a>
-          {% else %}
-            <li>Esse paciente foi encerrado</li>
-          {% endif %}
-        </ul>
-
+        <form class="formulario" action="migrar?id={{ paciente.Id }}&nome={{ terapeuta.Nome }}" method="post">{% csrf_token %}
+          <select class="seletor" name="escolhido">
+            {% for t in terapeutas %}
+              <option value="{{ t.Nome }}">{{ t.Nome }}</option>
+            {% endfor %}
+          </select>
+          <input type="password" id="senha" name="senha" placeholder="Confirme sua senha">
+          <input type="submit" name="Confirmar migração">
+        </form>
       </div>
     </div>
   </body>

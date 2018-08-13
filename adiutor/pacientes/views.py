@@ -2,30 +2,34 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import terapeutas, pacientes
 
+from django.contrib import messages
+#messages.add_message(request, message.)
+
 def index(request):
     return render(request, 'pacientes/index.html')
 
 def login(request):
-    name = request.GET.get('nome')
-    crp = request.GET.get('crp')
-    password = request.GET.get('senha')
+    name = request.POST.get('nome')
+    crp = request.POST.get('crp')
+    password = request.POST.get('senha')
 
     for terapeuta in terapeutas.objects.all():
         if name == terapeuta.Nome:
             if crp == terapeuta.Crp:
                 if password == terapeuta.Senha:
                     pacients = pacientes.objects.filter(Terapeuta=terapeuta).order_by('Nome')
-                    context = {'nome':name, 'crp':crp,'senha':password, 'pacientes':pacients}
+                    context = {'terapeuta':terapeuta, 'pacientes':pacients, 'message':'Terapeuta autenticado com sucesso.'}
                     return render(request, 'pacientes/terapeuta.html', context)
-                return HttpResponse("Senha incorreta")
-            return HttpResponse("CRP incorreto")
-    return HttpResponse("Nome inválido")
+                return render(request, 'pacientes/index.html', {'message':'Senha inválida'})
+            return render(request, 'pacientes/index.html', {'message':'CRP inválido'})
+    return render(request, 'pacientes/index.html', {'message':'Nome inválido'})
 
 def acao(request):
     name = request.GET.get('nome')
+    terapeuta = terapeutas.objects.get(Nome=name)
     id = request.GET.get('id')
     pacient = pacientes.objects.get(Id=id)
-    context = {'nome':name, 'paciente':pacient}
+    context = {'terapeuta':terapeuta, 'paciente':pacient}
     return render(request, 'pacientes/acao.html', context)
 
 #import os
@@ -44,3 +48,25 @@ def escrever(request):
         return render(request, 'pacientes/acao.html', context)
     context = {'nome':name, 'paciente':pacient}
     return render(request, 'pacientes/escrever.html', context)
+
+def migrar(request):
+    name = request.GET.get('nome')
+    terapeuta = terapeutas.objects.get(Nome=name)
+    id = request.GET.get('id')
+    pacient = pacientes.objects.get(Id=id)
+    if request.method == 'POST':
+        escolhido = request.POST.get('escolhido')
+        password = request.POST.get('senha')
+        if password == terapeuta.Senha:
+            pacient.Terapeuta = terapeutas.objects.get(Nome=escolhido)
+            pacient.save()
+            message = 'Paciente migrado com sucesso'
+            pacients = pacientes.objects.filter(Terapeuta=terapeuta)
+            context = {'terapeuta':terapeuta, 'pacientes':pacients, 'message':message}
+            return render(request, 'pacientes/terapeuta.html', context)
+        else:
+            return HttpResponse("Senha incorreta")
+
+    terapeutasPossiveis = terapeutas.objects.exclude(Nome=name)
+    context = {'paciente':pacient, 'terapeuta':terapeuta, 'terapeutas':terapeutasPossiveis}
+    return render(request, 'pacientes/migrar.html', context)

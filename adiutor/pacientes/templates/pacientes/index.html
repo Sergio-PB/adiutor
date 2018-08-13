@@ -7,13 +7,18 @@
     <title>LOCUS ADIUTOR</title>
   </head>
   <body>
+    {% if message %}
+      <script type="text/javascript">
+        alert("{{ message }}")
+      </script>
+    {% endif %}
     <header>
       <div class="head">
         <h1>Bem Vindo ao Adiutor!</h1>
       </div>
     </header>
     <div class="form">
-      <form class="formulario" action="login">
+      <form class="formulario" action="login" method="post">{% csrf_token %}
         <input type="text" name="nome" placeholder="Insira seu nome aqui">
         <input type="text" name="crp" placeholder="Insira seu CRP aqui">
         <input type="password" name="senha" placeholder="Insira sua senha aqui">

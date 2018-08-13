@@ -4,12 +4,17 @@
     <meta charset="utf-8">
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
-    <title>Área de {{ nome }}</title>
+    <title>Área de {{ terapeuta.Nome }}</title>
   </head>
   <body>
+    {% if message %}
+      <script type="text/javascript">
+        alert("{{ message }}")
+      </script>
+    {% endif %}
     <header>
       <div class="head">
-        <h1>Olá {{ nome }}!</h1>
+        <h1>Olá {{ terapeuta.Nome }}!</h1>
         <h2>Selecione um paciente:</h2>
       </div>
     </header>
@@ -24,17 +29,17 @@
           {% for p in pacientes %}
               <tr>
                 <th>
-                  <a href="/acao?id={{ p.Id }}&nome={{ nome }}">
+                  <a href="/acao?id={{ p.Id }}&nome={{ terapeuta.Nome }}">
                     {{ p.Id }}
                   </a>
                 </th>
                 <th>
-                  <a href="/acao?id={{ p.Id }}&nome={{ nome }}">
+                  <a href="/acao?id={{ p.Id }}&nome={{ terapeuta.Nome }}">
                     {{ p.Nome }}
                   </a>
                 </th>
                 <th>
-                  <a href="/acao?id={{ p.Id }}&nome={{ nome }}">
+                  <a href="/acao?id={{ p.Id }}&nome={{ terapeuta.Nome }}">
                     {{ p.Status }}
                   </a>
                 </th>
