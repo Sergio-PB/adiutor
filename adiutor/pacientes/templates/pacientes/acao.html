@@ -15,13 +15,13 @@
     </header>
     <div class="container">
       <div class="select action">
-        Paciente: {{ paciente }}
+        Paciente: {{ paciente.Nome }}
         <ul>
-          {% if status == 'ANAMNESE' %}
-            <a href="#"><li>Escrever a anamnese</li></a>
-          {% elif status == 'ATENDIMENTO' %}
-            <a href="#"><li>Escrever um prontuário</li></a>
-            <a href="#"><li>Migrar o paciente</li></a>
+          {% if paciente.Status == 'ANAMNESE' %}
+            <a href="anamnese?id={{ paciente.Id }}&nome={{ nome }}"><li>Escrever a anamnese</li></a>
+          {% elif paciente.Status == 'ATENDIMENTO' %}
+            <a href="escrever?id={{ paciente.Id }}&nome={{ nome }}"><li>Escrever um prontuário</li></a>
+            <a href="migrar?id={{ paciente.Id }}&nome={{ nome }}"><li>Migrar o paciente</li></a>
           {% else %}
             <li>Esse paciente foi encerrado</li>
           {% endif %}

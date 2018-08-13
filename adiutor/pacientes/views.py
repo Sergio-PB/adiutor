@@ -24,7 +24,23 @@ def login(request):
 def acao(request):
     name = request.GET.get('nome')
     id = request.GET.get('id')
-    status = request.GET.get('status')
-    pacient = request.GET.get('paciente')
-    context = {'nome':name, 'id':id, 'status':status, 'paciente':pacient}
+    pacient = pacientes.objects.get(Id=id)
+    context = {'nome':name, 'paciente':pacient}
     return render(request, 'pacientes/acao.html', context)
+
+#import os
+#os.mkdir('teste')
+def escrever(request):
+    name = request.GET.get('nome')
+    id = request.GET.get('id')
+    pacient = pacientes.objects.get(pk=id)
+    if request.method == 'POST':
+        date = request.POST.get('data')
+        texto = request.POST.get('texto')
+        f = open(str("pacientes/prontuarios/"+id), "a+")
+        f.write(str(date))
+        f.write("\n"+texto+"\n\n")
+        f.close()
+        return render(request, 'pacientes/acao.html', context)
+    context = {'nome':name, 'paciente':pacient}
+    return render(request, 'pacientes/escrever.html', context)

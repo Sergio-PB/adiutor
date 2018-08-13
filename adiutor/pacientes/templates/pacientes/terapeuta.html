@@ -16,28 +16,25 @@
     <div class="container">
       <div class="select pacients">
         <table>
-          <a href="#">
-            <tr><a href="#">
-              <th>ID</th>
-              <th>Nome</th>
-              <th>Status</th>
-              </a>
-            </tr>
-          </a>
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Status</th>
+          </tr>
           {% for p in pacientes %}
               <tr>
                 <th>
-                  <a href="/acao?id={{ p.Id }}&status={{ p.Status }}&nome={{ nome }}&paciente={{ p.Nome }}">
+                  <a href="/acao?id={{ p.Id }}&nome={{ nome }}">
                     {{ p.Id }}
                   </a>
                 </th>
                 <th>
-                  <a href="/acao?id={{ p.Id }}&status={{ p.Status }}&nome={{ nome }}&paciente={{ p.Nome }}">
+                  <a href="/acao?id={{ p.Id }}&nome={{ nome }}">
                     {{ p.Nome }}
                   </a>
                 </th>
                 <th>
-                  <a href="/acao?id={{ p.Id }}&status={{ p.Status }}&nome={{ nome }}&paciente={{ p.Nome }}">
+                  <a href="/acao?id={{ p.Id }}&nome={{ nome }}">
                     {{ p.Status }}
                   </a>
                 </th>
