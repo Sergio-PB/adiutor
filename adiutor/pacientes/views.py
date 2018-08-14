@@ -18,7 +18,7 @@ def login(request):
             if crp == terapeuta.Crp:
                 if password == terapeuta.Senha:
                     pacients = pacientes.objects.filter(Terapeuta=terapeuta).order_by('Nome')
-                    context = {'terapeuta':terapeuta, 'pacientes':pacients, 'message':'Terapeuta autenticado com sucesso.'}
+                    context = {'terapeuta':terapeuta, 'pacientes':pacients}
                     return render(request, 'pacientes/terapeuta.html', context)
                 return render(request, 'pacientes/index.html', {'message':'Senha inválida'})
             return render(request, 'pacientes/index.html', {'message':'CRP inválido'})

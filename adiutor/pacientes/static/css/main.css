@@ -19,6 +19,26 @@ header {
   background: #8f2427;
   text-align: center;
   vertical-align: middle;
+  display: inline-block;
+}
+
+
+header .btn {
+  position: absolute;
+  z-index: 2;
+  width: 150px;
+  top: 0;
+  left: 0;
+  padding: 3px 5px;
+  border: 2px black solid;
+  margin: 10px;
+  color: black;
+  background-color: #e5dc9a;
+}
+
+header .btn:hover{
+  background-color: #561517;
+  color: white;
 }
 
 h1, h2{
