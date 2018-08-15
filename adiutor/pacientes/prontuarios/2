@@ -1,0 +1,11 @@
+{}
+
+
+
+
+----------------------<QueryDict: {'csrfmiddlewaretoken': ['SpVgjkmr4D1avjo8BouewqVerx2yqIVISy4Oh7AvKZSt5pf7qrACSZCUTtJvCuTe'], 'nome_do_paciente': [''], 'sexo': ['masculino'], 'data_de_nascimento': [''], 'nome_do_pai': [''], 'data_de_nascimento_do_pai': [''], 'profissao_do_pai': [''], 'escolaridade_do_pai': [''], 'nome_da_mae': [''], 'data_de_nascimento_da_mae': [''], 'profissao_da_mae': [''], 'escolaridadeda_mae': [''], 'gravidez': ['Não planejada'], 'obsGravidez': [''], 'doecas_quais': [''], 'condOutro': [''], 'primOutro': [''], 'obsSono': [''], 'mamou_ate': [''], 'alimentacao': [''], 'bico_ate': [''], 'falou': [''], 'engatinhou': [''], 'andou': [''], 'gaguejou': [''], 'dedo_ate': [''], 'roeu_ate': [''], 'mania': [''], 'estuda_desde': [''], 'dificuldade': [''], 'estuda_com': [''], 'obsSociabilidade': [''], 'medroso': ['s'], 'mentiroso': ['s'], 'obediente': ['s'], 'timido': ['s'], 'corajoso': ['s'], 'seguro': ['s'], 'preguicoso': ['s'], 'caracOutro': [''], 'convive': [''], 'manifestacoes': [''], 'comportamento_atitude': [''], 'pessoas_ligadas': [''], 'relacionamento_cada_membro': [''], 'obsAluno': [''], 'data': [''], 'senha': ['']}>
+
+
+
+
+----------------------b'csrfmiddlewaretoken=SpVgjkmr4D1avjo8BouewqVerx2yqIVISy4Oh7AvKZSt5pf7qrACSZCUTtJvCuTe&nome_do_paciente=&sexo=masculino&data_de_nascimento=&nome_do_pai=&data_de_nascimento_do_pai=&profissao_do_pai=&escolaridade_do_pai=&nome_da_mae=&data_de_nascimento_da_mae=&profissao_da_mae=&escolaridadeda_mae=&gravidez=N%C3%A3o+planejada&obsGravidez=&doecas_quais=&condOutro=&primOutro=&obsSono=&mamou_ate=&alimentacao=&bico_ate=&falou=&engatinhou=&andou=&gaguejou=&dedo_ate=&roeu_ate=&mania=&estuda_desde=&dificuldade=&estuda_com=&obsSociabilidade=&medroso=s&mentiroso=s&obediente=s&timido=s&corajoso=s&seguro=s&preguicoso=s&caracOutro=&convive=&manifestacoes=&comportamento_atitude=&pessoas_ligadas=&relacionamento_cada_membro=&obsAluno=&data=&senha='

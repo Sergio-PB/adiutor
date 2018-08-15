@@ -26,28 +26,28 @@
     <div class="container">
       <div class="select action">
         Paciente: {{ paciente.Nome }}
-        <form class="anam" action="escrever?id={{ paciente.Id }}&nome={{ terapeuta.Nome }}" method="post" id="form">{% csrf_token %}
+        <form class="anam" action="anamnese?id={{ paciente.Id }}&nome={{ terapeuta.Nome }}" method="post" id="form">{% csrf_token %}
           <div class="setor">
             <label>Identificação</label>
             <div class="">
-              Nome do paciente <input type="text" class="nome" name="nomePaciente" placeholder="Nome do Paciente">
+              Nome do paciente <input type="text" class="nome" name="nome_do_paciente" placeholder="Nome do Paciente">
               Gênero
               <select name="sexo">
-                <option value="m">Masculino</option>
-                <option value="f">Feminino</option>
-                <option value="o">Outro/Prefiro não especificar</option>
+                <option value="masculino">Masculino</option>
+                <option value="feminino">Feminino</option>
+                <option value="outro">Outro/Prefiro não especificar</option>
               </select>
-              Data de Nascimento <input type="date" name="nascimento">
+              Data de Nascimento <input type="date" name="data_de_nascimento">
               <br>
-              Nome do Pai <input type="text" class="nome" name="nomePai" placeholder="Nome do Pai">
-              Nascimento <input type="date" class="nasc" name="nascimentoPai">
-              Profissão <input type="text" name="profissaoPai" placeholder="Profissão do Pai">
-              Escolaridade <input type="text" name="escolaridadePai" placeholder="Escolaridade do Pai">
+              Nome do Pai <input type="text" class="nome" name="Nome do Pai" placeholder="Nome do Pai">
+              Nascimento <input type="date" class="nasc" name="data_de_nascimento_do_pai">
+              Profissão <input type="text" name="Profissão do Pai" placeholder="Profissão do Pai">
+              Escolaridade <input type="text" name="Escolaridade do Pai" placeholder="Escolaridade do Pai">
               <br>
-              Nome da Mãe<input type="text" class="nome" name="nomeMae" placeholder="Nome da Mãe">
-              Nascimento <input type="date" class="nasc" name="nascimentoMae">
-              Profissão <input type="text" name="profissaoMae" placeholder="Profissão da Mãe">
-              Escolaridade <input type="text" name="escolaridadeMae" placeholder="Escolaridade da Mãe">
+              Nome da Mãe<input type="text" class="nome" name="Nome da Mãe" placeholder="Nome da Mãe">
+              Nascimento <input type="date" class="nasc" name="data_de_nascimento_da_mae">
+              Profissão <input type="text" name="Profissão da Mãe" placeholder="Profissão da Mãe">
+              Escolaridade <input type="text" name="Escolaridade da Mãe" placeholder="Escolaridade da Mãe">
             </div>
           </div>
 
@@ -57,8 +57,8 @@
             <label>Gravidez</label>
             <div class="side">
               <div class="sideA">
-                <input type="radio" name="gravidez" value="p">planejada <br>
-                <input type="radio" name="gravidez" value="n">não planejada
+                <input type="radio" name="gravidez" value="Planejada">planejada <br>
+                <input type="radio" name="gravidez" value="Não planejada">não planejada
               </div>
               <textarea class="sideB" name="obsGravidez" rows="3" cols="80" placeholder="Obs:"></textarea>
             </div>
@@ -100,14 +100,14 @@
               <input type="radio" name="tempo" value="normal">tempo normal
               <input type="radio" name="tempo" value="pos">pós-maturo
             </div>
-            Quais? <input type="text" name="condOutro" placeholder="Outro">
+            Outro <input type="text" name="condOutro" placeholder="Outro">
           </div>
 
           <div class="setor gravidez">
             <label>Primeiras Reações</label>
             <div>
               <input type="checkbox" name="chorou" value="s">chorou
-              <input type="checkbox" name="chorou" value="s">chorou
+              <input type="checkbox" name="roxo" value="s">ficou roxo
             </div>
             Outra, qual?   <input type="text" name="primOutro" placeholder="Outra">
           </div>
@@ -290,7 +290,8 @@
           </div>
 
           Florianópolis, <input type="date" name="data"><br>
-          Senha do profissional <input type="text" name="senha" placeholder="Digite sua senha">
+          Senha do profissional <input type="password" name="senha" placeholder="Digite sua senha">
+          <input type="submit" value="FINALIZAR ANAMNESE">
         </form>
 
       </div>

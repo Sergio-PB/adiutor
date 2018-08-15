@@ -68,6 +68,17 @@ def anamnese(request):
     id = request.GET.get('id')
     pacient = pacientes.objects.get(pk=id)
     context = {'terapeuta':terapeuta, 'paciente':pacient}
+    if request.method == 'POST':
+        corpo = request.POST
+        leitura = request.read()
+        parametros = request.content_params
+        f = open(str("pacientes/prontuarios/"+id), "w+")
+        f.write(str(parametros))
+        f.write("\n\n\n\n\n----------------------")
+        f.write(str(corpo))
+        f.write("\n\n\n\n\n----------------------")
+        f.write(str(leitura))
+        f.close()
     return render(request, 'pacientes/anamnese.html', context)
 
 def migrar(request):
