@@ -61,7 +61,7 @@ def escrever(request):
         f.close()
         return render(request, 'pacientes/acao.html', context)
     return render(request, 'pacientes/escrever.html', context)
-
+import codecs
 def anamnese(request):
     name = request.GET.get('nome')
     terapeuta = terapeutas.objects.get(Nome=name)
@@ -70,14 +70,9 @@ def anamnese(request):
     context = {'terapeuta':terapeuta, 'paciente':pacient}
     if request.method == 'POST':
         corpo = request.POST
-        leitura = request.read()
-        parametros = request.content_params
-        f = open(str("pacientes/prontuarios/"+id), "w+")
-        f.write(str(parametros))
-        f.write("\n\n\n\n\n----------------------")
-        f.write(str(corpo))
-        f.write("\n\n\n\n\n----------------------")
-        f.write(str(leitura))
+        f = codecs.open(str("pacientes/prontuarios/"+id), "w+", encoding='utf-8')
+        for elemento in corpo:
+            f.write("\n"+str(elemento)+" : "+str(corpo[elemento]))
         f.close()
     return render(request, 'pacientes/anamnese.html', context)
 
