@@ -25,7 +25,7 @@ SECRET_KEY = '#@61&*z7deqn*dkw8cs3b3rh^e)(s*_!8uq+tt7ii3z-ndj5(*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0','192.168.1.198']
 
 
 # Application definition
@@ -74,16 +74,19 @@ WSGI_APPLICATION = 'adiutor.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
+#try:
+    #DATABASES = {
+        #'default': {
+            #'ENGINE': 'django.db.backends.postgresql',
+            #'NAME': 'postgres',
+            #'USER': 'postgres',
+            #'HOST':'db',
+            #'HOST': '/var/run/postgresql',
+            #'PORT': 5432,
+        #}
+    #}
+#except:
 DATABASES = {
-    'backup':{
-
-    },
-
-#    'main': {
-#        'ENGINE': 'django.db.backend.postgresql',
-#
-#    },
-
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.backup'),

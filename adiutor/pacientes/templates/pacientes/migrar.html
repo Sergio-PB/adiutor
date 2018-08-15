@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
-    <title>Área de {{ nome }}</title>
+    <title>Área de {{ terapeuta.Nome }}</title>
   </head>
   <body>
     {% if message %}
@@ -16,7 +16,7 @@
       <div class="head">
         <h1>Olá {{ terapeuta.Nome }}!</h1>
         <h2>Selecione a o terapeuta para migrar:</h2>
-        <a href="#">
+        <a href="terapeuta?nome={{ terapeuta.Nome }}">
           <div class="btn">
             <h3>Voltar</h3>
           </div>

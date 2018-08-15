@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import terapeutas, pacientes
 
@@ -13,21 +13,33 @@ def login(request):
     crp = request.POST.get('crp')
     password = request.POST.get('senha')
 
-    for terapeuta in terapeutas.objects.all():
-        if name == terapeuta.Nome:
-            if crp == terapeuta.Crp:
-                if password == terapeuta.Senha:
-                    pacients = pacientes.objects.filter(Terapeuta=terapeuta).order_by('Nome')
-                    context = {'terapeuta':terapeuta, 'pacientes':pacients}
-                    return render(request, 'pacientes/terapeuta.html', context)
+    for t in terapeutas.objects.all():
+        if name == t.Nome:
+            if crp == t.Crp:
+                if password == t.Senha:
+                    #pacients = pacientes.objects.filter(Terapeuta=t).order_by('Nome')
+                    context = {'terapeuta':t}
+                    return redirect(('/terapeuta?nome='+str(t.Nome)))
+                    #return render(request, 'pacientes/terapeuta.html', context)
                 return render(request, 'pacientes/index.html', {'message':'Senha inválida'})
             return render(request, 'pacientes/index.html', {'message':'CRP inválido'})
     return render(request, 'pacientes/index.html', {'message':'Nome inválido'})
 
-def acao(request):
+def terapeuta(request):
     name = request.GET.get('nome')
     terapeuta = terapeutas.objects.get(Nome=name)
-    id = request.GET.get('id')
+    pacients = pacientes.objects.filter(Terapeuta=terapeuta).order_by('Nome').exclude(Status='ENCERRADO')
+    context = {'terapeuta':terapeuta, 'pacientes':pacients}
+    return render(request, 'pacientes/terapeuta.html', context)
+
+def acao(request):
+    if request.method == 'GET':
+        name = request.GET.get('nome')
+        id = request.GET.get('id')
+    elif request.method == 'POST':
+        name = request.POST.get('nome')
+        id = request.POST.get('id')
+    terapeuta = terapeutas.objects.get(Nome=name)
     pacient = pacientes.objects.get(Id=id)
     context = {'terapeuta':terapeuta, 'paciente':pacient}
     return render(request, 'pacientes/acao.html', context)
@@ -35,9 +47,11 @@ def acao(request):
 #import os
 #os.mkdir('teste')
 def escrever(request):
-    name = request.GET.get('nome')
+    name = request.GET.get('nome') #Essa parte nao eh do form
+    terapeuta = terapeutas.objects.get(Nome=name)
     id = request.GET.get('id')
     pacient = pacientes.objects.get(pk=id)
+    context = {'terapeuta':terapeuta, 'paciente':pacient}
     if request.method == 'POST':
         date = request.POST.get('data')
         texto = request.POST.get('texto')
@@ -46,8 +60,10 @@ def escrever(request):
         f.write("\n"+texto+"\n\n")
         f.close()
         return render(request, 'pacientes/acao.html', context)
-    context = {'nome':name, 'paciente':pacient}
     return render(request, 'pacientes/escrever.html', context)
+
+def anamnese(request):
+    pass
 
 def migrar(request):
     name = request.GET.get('nome')
