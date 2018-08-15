@@ -63,7 +63,12 @@ def escrever(request):
     return render(request, 'pacientes/escrever.html', context)
 
 def anamnese(request):
-    pass
+    name = request.GET.get('nome')
+    terapeuta = terapeutas.objects.get(Nome=name)
+    id = request.GET.get('id')
+    pacient = pacientes.objects.get(pk=id)
+    context = {'terapeuta':terapeuta, 'paciente':pacient}
+    return render(request, 'pacientes/anamnese.html', context)
 
 def migrar(request):
     name = request.GET.get('nome')

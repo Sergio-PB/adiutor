@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/main.css' %}?{% now "U" %}">
+    <title>Área de {{ terapeuta.Nome }}</title>
+  </head>
+  <body>
+    {% if message %}
+      <script type="text/javascript">
+        alert("{{ message }}")
+      </script>
+    {% endif %}
+    <header>
+      <div class="head">
+        <h1>Olá {{ terapeuta.Nome }}!</h1>
+        <h2>Fazendo anamnese</h2>
+        <a href="acao?id={{ paciente.Id }}&nome={{ terapeuta.Nome }}">
+          <div class="btn">
+            <h3>Voltar</h3>
+          </div>
+        </a>
+      </div>
+    </header>
+    <div class="container">
+      <div class="select action">
+        Paciente: {{ paciente.Nome }}
+        <form class="anam" action="escrever?id={{ paciente.Id }}&nome={{ terapeuta.Nome }}" method="post" id="form">{% csrf_token %}
+          <div class="setor">
+            <label>Identificação</label>
+            <div class="">
+              Nome do paciente <input type="text" class="nome" name="nomePaciente" placeholder="Nome do Paciente">
+              Gênero
+              <select name="sexo">
+                <option value="m">Masculino</option>
+                <option value="f">Feminino</option>
+                <option value="o">Outro/Prefiro não especificar</option>
+              </select>
+              Data de Nascimento <input type="date" name="nascimento">
+              <br>
+              Nome do Pai <input type="text" class="nome" name="nomePai" placeholder="Nome do Pai">
+              Nascimento <input type="date" class="nasc" name="nascimentoPai">
+              Profissão <input type="text" name="profissaoPai" placeholder="Profissão do Pai">
+              Escolaridade <input type="text" name="escolaridadePai" placeholder="Escolaridade do Pai">
+              <br>
+              Nome da Mãe<input type="text" class="nome" name="nomeMae" placeholder="Nome da Mãe">
+              Nascimento <input type="date" class="nasc" name="nascimentoMae">
+              Profissão <input type="text" name="profissaoMae" placeholder="Profissão da Mãe">
+              Escolaridade <input type="text" name="escolaridadeMae" placeholder="Escolaridade da Mãe">
+            </div>
+          </div>
+
+          <!-- GENOGRAMA -->
+
+          <div class="setor gravidez">
+            <label>Gravidez</label>
+            <div class="side">
+              <div class="sideA">
+                <input type="radio" name="gravidez" value="p">planejada <br>
+                <input type="radio" name="gravidez" value="n">não planejada
+              </div>
+              <textarea class="sideB" name="obsGravidez" rows="3" cols="80" placeholder="Obs:"></textarea>
+            </div>
+          </div>
+
+          <div class="setor gravidez">
+            <label>Gestação</label>
+            <div class="radio_pick">
+              Pré-natal
+              <input type="radio" name="prenat" value="s">Sim
+              <input type="radio" name="prenat" value="n">Não
+            </div>
+            <div class="radio_pick">
+              Radiografias
+              <input type="radio" name="rad" value="s">Sim
+              <input type="radio" name="rad" value="n">Não
+            </div>
+            <div class="radio_pick">
+              Ultra-sonografias
+              <input type="radio" name="ultrason" value="s">Sim
+              <input type="radio" name="ultrason" value="n">Não
+            </div>
+            <div class="radio_pick">
+              Doenças
+              <input type="radio" name="doencas" value="s">Sim
+              <input type="radio" name="doencas" value="n">Não
+            </div>
+            <textarea name="doecas_quais" rows="2" cols="80" form="form" placeholder="Quais?"></textarea>
+          </div>
+
+          <div class="setor gravidez">
+            <label>Condições de Nascimento</label>
+            <div class="radio_pick">
+              <input type="radio" name="parto" value="n">parto normal
+              <input type="radio" name="parto" value="c">cesariana
+            </div>
+            <div class="radio_pick">
+              <input type="radio" name="tempo" value="pre">prematuro
+              <input type="radio" name="tempo" value="normal">tempo normal
+              <input type="radio" name="tempo" value="pos">pós-maturo
+            </div>
+            Quais? <input type="text" name="condOutro" placeholder="Outro">
+          </div>
+
+          <div class="setor gravidez">
+            <label>Primeiras Reações</label>
+            <div>
+              <input type="checkbox" name="chorou" value="s">chorou
+              <input type="checkbox" name="chorou" value="s">chorou
+            </div>
+            Outra, qual?   <input type="text" name="primOutro" placeholder="Outra">
+          </div>
+
+          <div class="setor gravidez">
+            <label>Desenvolvimento</label>
+            <ul>
+              <div>
+                <label class="sub">Sono</label>
+                <div>
+                  <input type="checkbox" name="bem" value="s">dorme bem
+                  <br>
+                  <input type="checkbox" name="grita" value="s">grita enquanto dorme
+                  <br>
+                  <input type="checkbox" name="fala" value="s">fala enquanto dorme
+                  <br>
+                  <input type="checkbox" name="sozinho" value="s">dorme sozinho(a)
+                  <br>
+                  <input type="checkbox" name="acorda" value="s">acorda com frequência à noite
+                  <br>
+                  <input type="checkbox" name="pesadelos" value="s">pesadelos frequentes
+                </div>
+                OBS:   <br><textarea name="obsSono" rows="3" cols="80"></textarea>
+              </div>
+              <div>
+                <label class="sub">Alimentação</label>
+                <div>
+                  Mamou até que idade? <input type="text" name="mamou_ate"><br>
+                  Que outra alimentação era fornecida? <input class="sideB" type="text" name="alimentacao"><br>
+                  Bico e/ou chupeta atè que idade? <input type="text" name="bico_ate">
+                </div>
+              </div>
+              <div>
+                <label class="sub">Motricidade</label>
+                <div>
+                  Falou... <input class="sideB" type="text" name="falou"><br>
+                  Engatinhou... <input class="sideB" type="text" name="engatinhou"><br>
+                  Andou... <input class="sideB" type="text" name="andou"><br>
+                  Gaguejou... <input class="sideB" type="text" name="gaguejou">
+                </div>
+              </div>
+              <div>
+                <label class="sub">Manipulação</label>
+                <div>
+                  Chupou dedo até quando? <input type="text" name="dedo_ate"><br>
+                  Roeu unhas até quando? <input type="text" name="roeu_ate"><br>
+                  Tem algum hábito ou mania? Qual e desde quando? <input class="sideB" type="text" name="mania">
+                </div>
+              </div>
+            </ul>
+          </div>
+
+          <div class="setor">
+            <label>Escolaridade</label>
+            <div>
+              Estuda desde que idade? <input type="text" name="estuda_desde"><br>
+              Alguma dificuldade na escola? (atividades e relacionamentos)?
+              <br><textarea name="dificuldade" rows="2" cols="80"></textarea><br>
+              Fora de casa estuda com quem?
+              <br><textarea name="estuda_com" rows="2" cols="80"></textarea>
+            </div>
+          </div>
+
+          <div class="setor">
+            <label>Sociabilidade</label>
+            <div class="side">
+              <div class="sideA">
+                <input type="checkbox" name="tem_amigos" value="s">tem amigos <br>
+                <input type="checkbox" name="faz_amigos" value="s">faz amigos com facilidade
+              </div>
+              <textarea name="obsSociabilidade" rows="3" cols="80"></textarea>
+            </div>
+          </div>
+
+          <div class="setor">
+            <label>Características</label>
+            <div>
+              Medroso(a)
+              <select name="medroso">
+                <option value="s">Sim</option>
+                <option value="n">Não</option>
+                <option value="as">às vezes</option>
+              </select>
+            </div>
+            <div>
+              Mentiroso(a)
+              <select name="mentiroso">
+                <option value="s">Sim</option>
+                <option value="n">Não</option>
+                <option value="as">às vezes</option>
+              </select>
+            </div>
+            <div>
+              Obediente
+              <select name="obediente">
+                <option value="s">Sim</option>
+                <option value="n">Não</option>
+                <option value="as">às vezes</option>
+              </select>
+            </div>
+            <div>
+              Tímido(a)
+              <select name="timido">
+                <option value="s">Sim</option>
+                <option value="n">Não</option>
+                <option value="as">às vezes</option>
+              </select>
+            </div>
+            <div>
+              Corajoso(a)
+              <select name="corajoso">
+                <option value="s">Sim</option>
+                <option value="n">Não</option>
+                <option value="as">às vezes</option>
+              </select>
+            </div>
+            <div>
+              Seguro(a)
+              <select name="seguro">
+                <option value="s">Sim</option>
+                <option value="n">Não</option>
+                <option value="as">às vezes</option>
+              </select>
+            </div>
+            <div>
+              Preguiçoso(a)
+              <select name="preguicoso">
+                <option value="s">Sim</option>
+                <option value="n">Não</option>
+                <option value="as">às vezes</option>
+              </select>
+            </div>
+            Outras características<br><textarea name="caracOutro" rows="3" cols="80"></textarea>
+          </div>
+
+          <div class="setor">
+            <label>Independência</label>
+            <div>
+              <input type="checkbox" name="vestir_sozinho" value="s">Veste-se sozinho(a)
+              <br><input type="checkbox" name="alimenta_sozinho" value="s">Alimenta-se sozinho(a)
+              <br><input type="checkbox" name="banho_sozinho" value="s">Toma banho sozinho(a)
+              <br><input type="checkbox" name="todos_dias" value="s">Todos os dias
+              <br><input type="checkbox" name="realiza_tarefas" value="s">Realiza tarefas que lhe pedem
+              <br><input type="checkbox" name="convive_adultos" value="s">Convive com adultos? Quem são? <input class="sideB" type="text" name="convive">
+              <br><input type="checkbox" name="manifestacoes_sexuais" value="s">Manifestações sexuais? <input  class="sideB" type="text" name="manifestacoes">
+            </div>
+          </div>
+
+          <div class="setor">
+            <label>Características dos Pais</label>
+            <div>
+              Mãe <br>
+              <input type="checkbox" name="mae_calmo" value="s">calma
+              <input type="checkbox" name="mae_ansioso" value="s">ansiosa
+            </div>
+            <div>
+              Pai <br>
+              <input type="checkbox" name="pai_calmo" value="s">calmo
+              <input type="checkbox" name="pai_ansioso" value="s">ansioso
+            </div>
+            <div>
+              Atitude diante de um comportamento "negativo" da criança.
+              <br><textarea name="comportamento_atitude" rows="5" cols="80"></textarea>
+            </div>
+          </div>
+          <div>
+            Quais são as pessoas mais diretamente ligadas a educação da criança?
+            <br><textarea name="pessoas_ligadas" rows="5" cols="80"></textarea>
+          </div>
+          <div>
+            Como é o relacionamento com cada membro da família?
+            <br><textarea name="relacionamento_cada_membro" rows="7" cols="80"></textarea>
+          </div>
+
+          <div class="setor">
+            <label>Observações do aluno terapeuta</label>
+            <div>
+              <textarea name="obsAluno" rows="10" cols="100"></textarea>
+            </div>
+          </div>
+
+          Florianópolis, <input type="date" name="data"><br>
+          Senha do profissional <input type="text" name="senha" placeholder="Digite sua senha">
+        </form>
+
+      </div>
+    </div>
+  </body>
+</html>

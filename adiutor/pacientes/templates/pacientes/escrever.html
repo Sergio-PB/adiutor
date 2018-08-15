@@ -25,7 +25,7 @@
     </header>
     <div class="container">
       <div class="select action">
-        Paciente: {{ paciente }}
+        Paciente: {{ paciente.Nome }}
         <form class="formulario" action="escrever?id={{ paciente.Id }}&nome={{ terapeuta.Nome }}" method="post" id="form">{% csrf_token %}
           <input type="date" name="data">
           <textarea name="texto" rows="8" cols="80" form="form" placeholder="Escreva o prontuário..."></textarea>
