@@ -19,9 +19,9 @@
     </header>
     <div class="form">
       <form class="formulario" action="login" method="post">{% csrf_token %}
-        <input type="text" name="nome" placeholder="Insira seu nome aqui">
-        <input type="text" name="crp" placeholder="Insira seu CRP aqui">
-        <input type="password" name="senha" placeholder="Insira sua senha aqui">
+        <input type="text" name="nome" placeholder="Insira seu nome aqui" autocomplete="off" required>
+        <input type="text" name="crp" placeholder="Insira seu CRP aqui" maxlength="5" autocomplete="off">
+        <input type="password" name="senha" placeholder="Insira sua senha aqui" autocomplete="off" required>
         <input type="submit" name="submit">
       </form>
     </div>
