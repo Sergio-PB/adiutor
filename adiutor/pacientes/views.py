@@ -98,6 +98,8 @@ def anamnese(request):
             pacients = pacientes.objects.filter(Terapeuta=terapeuta).order_by('Nome').exclude(Status='ENCERRADO')
             context = {'terapeuta':terapeuta, 'pacientes':pacients, 'message':message}
             return render(request, 'pacientes/terapeuta.html', context)
+        else:
+            return HttpResponse("Senha incorreta")
     return render(request, 'pacientes/anamnese.html', context)
 
 def migrar(request):
