@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/main.css' %}?{% now "U" %}">
-    <title>Área de {{ terapeuta.Nome }}</title>
+    <title>LOCUS ADIUTOR</title>
   </head>
   <body>
     {% if message %}
@@ -290,7 +290,9 @@
           </div>
 
           Florianópolis, <input type="date" name="Florianópolis, "><br>
+          Anamnese realizada por {{ terapeuta.Nome }} <br>
           Senha do profissional <input type="password" name="senha" placeholder="Digite sua senha">
+          <br>
           <input type="submit" value="FINALIZAR ANAMNESE">
         </form>
 

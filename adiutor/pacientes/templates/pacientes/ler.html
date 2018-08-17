@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}?{% now "U" %}">
     <title>LOCUS ADIUTOR</title>
   </head>
   <body>
@@ -15,7 +15,7 @@
     <header>
       <div class="head">
         <h1>Olá {{ terapeuta.Nome }}!</h1>
-        <h2>Fazendo prontuário</h2>
+        <h2>Lendo prontuário de {{ paciente.Nome }}</h2>
         <a href="acao?id={{ paciente.Id }}&nome={{ terapeuta.Nome }}">
           <div class="btn">
             <h3>Voltar</h3>
@@ -24,14 +24,8 @@
       </div>
     </header>
     <div class="container">
-      <div class="select action">
-        Paciente: {{ paciente.Nome }}
-        <form class="formulario" action="escrever?id={{ paciente.Id }}&nome={{ terapeuta.Nome }}" method="post" id="form">{% csrf_token %}
-          <input type="date" name="data">
-          <textarea name="texto" rows="8" cols="80" form="form" placeholder="Escreva o prontuário..."></textarea>
-          <input type="submit" name="Adicionar prontuário">
-        </form>
-
+      <div class="pront">
+        {{ texto }}
       </div>
     </div>
   </body>

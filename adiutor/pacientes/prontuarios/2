@@ -1,20 +1,31 @@
-çàá
-csrfmiddlewaretoken : PcAg1EUhRnPeAkO9ydpSqK07hac4GElUEIiCqXJHejtnlXqWT0ldKimDqCayJ3uU
-Nome do paciente : Márcia
-sexo : masculino
-Data de nascimento : 
-Nome do pai : 
-Data de nascimento do pai : 
-Profissão do pai : 
-Escolaridade do pai : 
-Nome da mãe : 
-Data de nascimento da mae : 
-Profissão da mãe : 
-Escolaridade da mãe : 
-Observações da gravidez : 
-Quais doenças : 
+PRONTUÁRIO DE Marcia
+
+----------Anamnese----------
+
+sexo : feminino
+Data de nascimento : 2018-08-17
+Nome do pai : Mário Pereira
+Data de nascimento do pai : 1938-06-14
+Profissão do pai : Caminhoneiro
+Escolaridade do pai : Fundamental
+Nome da mãe : Lídia Mercedes Pereira
+Data de nascimento da mae : 1930-08-17
+Profissão da mãe : Costureira
+Escolaridade da mãe : Fundamental
+Gravidez : Planejada
+Observações da gravidez : Vários filhos.
+Pré-natal : Não
+Radiografias : Não
+Ultra-sonografias : Não
+Doenças : Não
+Quais doenças : Talvez
+Parto : normal
+Tempo de nascimento : normal
 Condições de gravidez - Outro : 
+chorou : sim
 Primeiras Reações - Outra : 
+bem : sim
+sozinho : sim
 Observações do sono : 
 Mamou até que idade : 
 Que outra alimentação era fornecida : 
@@ -39,10 +50,26 @@ Seguro(a) : sim
 Preguiçoso(a) : sim
 Outras características : 
 Quem são : 
-manifestacoes : 
+manifestacoes : sergio
 Atitude diante de um comportamento negativo da criança : 
   Quais são as pessoas mais diretamente ligadas a educação da criança : 
 Como é o relacionamento com cada membro da família : 
 Observações do aluno terapeuta : 
-Florianópolis,  : 
-senha : 
+Florianópolis,  : 2018-08-17
+
+
+----------Prontuários----------
+
+2018-08-17
+Fazendo primeiro prontuário.
+
+2018-09-20
+Tá ok
+
+
+
+----------PACIENTE MIGRADO PARA Lucas----------
+
+2018-08-16
+Mais um prontuário
+
