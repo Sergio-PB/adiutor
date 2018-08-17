@@ -144,6 +144,12 @@ input[type="text"], input[type="number"]{
   white-space: pre-line;
 }
 
+.anam input[type = "submit"]{
+  width: 100%;
+  margin: 10px 0;
+  padding: 5px 10px;
+  height: 50px;
+}
 .select{
 
 }
