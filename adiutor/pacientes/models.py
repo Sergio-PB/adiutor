@@ -1,10 +1,11 @@
 from django.db import models
 
 class terapeutas(models.Model):
-    Nome = models.CharField(max_length=20)
+    Nome = models.CharField(max_length=40)
+    Username = models.CharField(max_length=20, blank=True, null=True)
     # CRP 12/ _ _ _ _ _
     Crp = models.CharField(max_length=5)
-    Senha = models.CharField(max_length=10)
+    Senha = models.CharField(max_length=20)
 
     def __str__(self):
         return self.Nome

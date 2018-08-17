@@ -15,7 +15,7 @@ def login(request):
     password = request.POST.get('senha')
 
     for t in terapeutas.objects.all():
-        if name == t.Nome:
+        if name == t.Username:
             if crp == t.Crp:
                 if password == t.Senha:
                     #pacients = pacientes.objects.filter(Terapeuta=t).order_by('Nome')
