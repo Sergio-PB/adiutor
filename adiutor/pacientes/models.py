@@ -26,7 +26,7 @@ class pacientes(models.Model):
     )
     Sexo = models.CharField(max_length=20, choices=SEX)
     Cadastro = models.DateField()
-    Terapeuta = models.ForeignKey(terapeutas, on_delete=models.CASCADE)
+    Terapeuta = models.ForeignKey(terapeutas, on_delete=models.CASCADE, null=True)
     Inicio = models.DateField()
     Termino = models.DateField(blank=True, null=True)
     STATUS = (
@@ -36,7 +36,7 @@ class pacientes(models.Model):
         ('ENCERRADO', 'Encerrado'),
     )
     Status = models.CharField(max_length=15, choices=STATUS, default='ANAMNESE')
-    Agendamento = models.IntegerField()
+    Agendamento = models.IntegerField(unique=False)
     CONVENIOS = (
         ('UNIMED', 'UNIMED'),
         ('AGEMED', 'AGEMED'),
@@ -56,7 +56,7 @@ class pacientes(models.Model):
     )
     Modalidade = models.CharField(max_length=20, choices=MOD)
     Celular = models.IntegerField(blank=True, null=True)
-    Whats = models.IntegerField( blank=True, null=True)
+    Whats = models.IntegerField(blank=True, null=True)
     Fixo = models.IntegerField(blank=True, null=True)
     Email = models.EmailField(max_length=40, blank=True, null=True)
     CIVIL = (

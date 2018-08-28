@@ -10,5 +10,4 @@ urlpatterns = [
     path('anamnese', views.anamnese, name='anamnese'),
     path('migrar', views.migrar, name='migrar'),
     path('ler', views.ler, name='ler'),
-
 ]
