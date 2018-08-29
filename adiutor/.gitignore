@@ -2,3 +2,4 @@ db.backup
 pacientes/prontuarios
 pacientes/__pycache__
 adiutor/__pycache__
+adiutor/pacientes/migrations
