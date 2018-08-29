@@ -1,0 +1,4 @@
+db.backup
+pacientes/prontuarios
+pacientes/__pycache__
+adiutor/__pycache__
