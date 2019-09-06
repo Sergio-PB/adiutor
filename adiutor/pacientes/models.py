@@ -1,6 +1,7 @@
 from django.db import models
 
 class terapeutas(models.Model):
+    # Id = models.IntegerField(primary_key=True)
     Nome = models.CharField(max_length=40)
     Username = models.CharField(max_length=20, blank=True, null=True)
     # CRP 12/ _ _ _ _ _
@@ -16,6 +17,8 @@ class terapeutas(models.Model):
 
 class pacientes(models.Model):
     Id = models.IntegerField(primary_key=True)
+    Saldo = models.IntegerField(default=0)
+    Balanco = models.DecimalField(max_digits=9, decimal_places=2)
     Nome = models.CharField(max_length=200)
     Responsavel = models.CharField(max_length=255, blank=True, null=True)
     Parentesco = models.CharField(max_length=200, blank=True, null=True)
@@ -78,6 +81,11 @@ class pacientes(models.Model):
 
     def __str__(self):
         return self.Nome
+
+    # def has_delete_permission(self, request,/)
+    def delete(self, *args, **kwargs):
+        print('tried to delete')
+        return
 
     class Meta:
         verbose_name = "Pacientes"
